@@ -1,0 +1,47 @@
+version: "3"
+
+services:
+  leaseweb_app:  
+    container_name: leaseweb_app
+    volumes:
+      - ./leaseweb:/var/www/html
+      - ./build/app/000-default.conf:/etc/apache2/sites-available/000-default.conf
+      - ./build/app/apache2.conf:/etc/apache2/apache2.conf
+    ports:
+     - '80:80'
+    build: './build/app'
+    #restart: on-failure
+    networks:
+       - leaseweb
+
+
+  leaseweb_database:
+    container_name: leaseweb_database
+    command:
+      - "mysqld"
+      - "--connect_timeout=1200"
+    image: mysql:5.7
+    restart: always
+    environment:
+      MYSQL_DATABASE: 'leaseweb'
+      MYSQL_USER: 'leaseweb'
+      MYSQL_PASSWORD: 'leaseweb'
+      MYSQL_ROOT_PASSWORD: 'password'
+    ports:
+      - '3306:3306'
+    expose:
+      - '3306'
+    volumes:
+      - leaseweb-db:/var/lib/mysql
+    networks:
+       - leaseweb
+
+ 
+volumes:
+    leaseweb-db:
+
+
+networks:
+    leaseweb:
+       driver: bridge
+
