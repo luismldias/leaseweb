@@ -3,6 +3,7 @@
 namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
+use App\Http\Resources\ServerCollection;
 
 class AppStructureResource extends JsonResource
 {
@@ -15,8 +16,8 @@ class AppStructureResource extends JsonResource
     public function toArray($request)
     {
         return [
-            'filters'         => $this->resource['filters']['ram'],
-            'initial_content' => new $this->resource['initial_list'],
+            'filters'         => $this->resource['filters'],
+            'initial_content' => new ServerCollection($this->resource['initial_list']),
         ];
     }
 }

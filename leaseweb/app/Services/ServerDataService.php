@@ -9,6 +9,7 @@ use App\Libs\Api\ParsedListParams;
 use Illuminate\Database\Eloquent\Builder;
 use App\Services\DataService;
 use Illuminate\Support\Facades\DB;
+use App\Models\Location;
 
 
 class ServerDataService extends DataService
@@ -106,6 +107,32 @@ class ServerDataService extends DataService
             ->get()
             ->pluck('ram_value')
             ->toArray();
+    }
+
+    /**
+     * Gets all the existing Hdd types from the database in an array
+     * @return array
+     */
+    public function getHddTypes(): array
+    {
+
+        return DB::table('servers')
+            ->orderBy('hdd_type', 'asc')
+            ->select('hdd_type')
+            ->distinct()
+            ->get()
+            ->pluck('hdd_type')
+            ->toArray();
+    }
+
+    /**
+     * Gets all the existing locations from the database in an array
+     * @return array
+     */
+    public function getLocations(): array
+    {
+        return Location::orderBy('name', 'asc')->get()->keyBy('id')->toArray();
+        
     }
 
 

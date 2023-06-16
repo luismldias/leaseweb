@@ -34,7 +34,9 @@ class StructureController extends ApiController
 
         $initialList = $this->dataService->list();
         $filters     = [
-            'ram' => $this->dataService->getRamValues(),
+            'ram'       => $this->dataService->getRamValues(),
+            'hdd_types' => $this->dataService->getHddTypes(),
+            'locations' => $this->dataService->getLocations(),
         ];
        
         $data = [
