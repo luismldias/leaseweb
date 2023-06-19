@@ -45,7 +45,8 @@
                 {{ selectedHddLabel }} 
             </div>
         </div>    
-        <input type="button" value="Search" @click="getList">
+        <input type="button" value="Search" @click="getList">&nbsp;
+        <input type="button" value="Reset Filters" @click="resetFilters">
         <hr>
 
         <div id="listContainer">
@@ -72,7 +73,6 @@
             
         </div>
         <pagination v-model="currentPage" :records="totalItems" :per-page="10" @paginate="onPaginate"/>
-
     </div>
     
    
@@ -80,8 +80,7 @@
 </template>
 <script>
 
-//import { onMounted } from 'vue'
-//import { ref } from 'vue'
+
 import axios from 'axios'
 import { reactive, computed, onMounted, ref } from 'vue'
 import Pagination from 'v-pagination-3';
@@ -113,8 +112,6 @@ export default {
         const totalItems = ref(0) 
         
 
-        //let currentPage    = 1;
-        //const currentPage = ref(1);
         const selectedHddLabel = computed(() => {
             
             if (hddSliderValue.value == "0" ){
@@ -134,6 +131,16 @@ export default {
         const onPaginate = async (page) => {
             getList(page);
         }
+
+        const resetFilters = async () => {
+            selectedLocation.value = 0;
+            selectedHdd.value = ''
+            selectedRam.value = []
+            selectedHddSize.value = 0
+            currentPage.value = 1
+            getList();
+        }
+
 
 
         const getList = async (page) => {
@@ -219,7 +226,8 @@ export default {
             currentPage,
             onPaginate,
             totalPages,
-            totalItems
+            totalItems,
+            resetFilters
         }
 
    }
