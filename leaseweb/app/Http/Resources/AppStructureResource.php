@@ -16,8 +16,7 @@ class AppStructureResource extends JsonResource
     public function toArray($request)
     {
         return [
-            'filters'         => $this->resource['filters'],
-            'initial_content' => new ServerCollection($this->resource['initial_list']),
+            'filters' => $this->resource['filters'],
         ];
     }
 }

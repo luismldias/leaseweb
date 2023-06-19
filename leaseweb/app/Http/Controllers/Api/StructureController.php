@@ -3,11 +3,8 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Api\ApiController;
-use App\Http\Resources\V1\AppEntryContentResource;
 use App\Http\Resources\AppStructureResource;
-
 use App\Services\ServerDataService;
-use App\Http\Resources\ServerCollection;
 
 class StructureController extends ApiController
 {
@@ -32,16 +29,15 @@ class StructureController extends ApiController
     public function index(): AppStructureResource
     {
 
-        $initialList = $this->dataService->list();
         $filters     = [
             'ram'       => $this->dataService->getRamValues(),
             'hdd_types' => $this->dataService->getHddTypes(),
             'locations' => $this->dataService->getLocations(),
+            'hdd_sizes' => $this->dataService->getHddSizes(),
         ];
        
         $data = [
             'filters'      => $filters,
-            'initial_list' => new ServerCollection($initialList),
         ];
 
         return new AppStructureResource($data);

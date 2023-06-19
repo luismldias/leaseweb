@@ -87,7 +87,7 @@ class ServerDataService extends DataService
 
         if (isset($params->filters['ram'])) {
             $ram = $params->filters['ram'];
-            $query->where('ram_value', $ram);
+            $query->whereIn('ram_value', $ram);
         }
 
     }
@@ -131,8 +131,74 @@ class ServerDataService extends DataService
      */
     public function getLocations(): array
     {
-        return Location::orderBy('name', 'asc')->get()->keyBy('id')->toArray();
+        $ret = [
+            0 => [
+                'id' => 0,
+                'name' => 'Select a location',
+            ]
+        ];
+        return $ret + Location::orderBy('name', 'asc')->get()->keyBy('id')->toArray();
         
+    }
+
+
+    /**
+     * Gets the hdd sizes for filter usage
+     * 
+     * @return array
+     */
+    public function getHddSizes(): array
+    {
+         return [
+            [
+                'label' => 'All',
+                'value' => 0
+            ],
+            [
+                'label' => '500Gb',
+                'value' => 256000
+            ],
+            [
+                'label' => '500Gb',
+                'value' => 512000
+            ],
+            [
+                'label' => '1TB',
+                'value' => 1048576
+            ],
+            [
+                'label' => '2TB',
+                'value' => 2097152
+            ],
+            [
+                'label' => '3TB',
+                'value' => 3145728
+            ],
+            [
+                'label' => '4TB',
+                'value' => 4194304
+            ],
+            [
+                'label' => '8TB',
+                'value' => 8388608
+            ],
+            [
+                'label' => '12TB',
+                'value' => 12582912
+            ],
+            [
+                'label' => '24TB',
+                'value' => 25165824
+            ],
+            [
+                'label' => '48TB',
+                'value' => 50331648
+            ],
+            [
+                'label' => '72TB',
+                'value' => 75497472
+            ]
+        ];
     }
 
 

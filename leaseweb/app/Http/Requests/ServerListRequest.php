@@ -35,7 +35,7 @@ class ServerListRequest extends FormRequest
             'filter.storage_to'   => 'nullable|integer',
             'filter.location_id'  => 'nullable|integer',
             'filter.hdd_type'     => 'nullable|string',
-            'filter.ram'          => 'nullable|integer',
+            'filter.ram'          => 'nullable|array',
         ];
         return array_replace($defaultRules, $adicionalRules);
     }
