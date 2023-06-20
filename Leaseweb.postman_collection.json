@@ -1,0 +1,102 @@
+{
+	"info": {
+		"_postman_id": "d1a848d1-12a8-4259-bc54-7415194b2438",
+		"name": "Leaseweb",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25466261"
+	},
+	"item": [
+		{
+			"name": "List Products",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost/api/servers",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"api",
+						"servers"
+					],
+					"query": [
+						{
+							"key": "paging[page]",
+							"value": "12",
+							"disabled": true
+						},
+						{
+							"key": "paging[items_per_page]",
+							"value": "2",
+							"disabled": true
+						},
+						{
+							"key": "order[by]",
+							"value": "model",
+							"disabled": true
+						},
+						{
+							"key": "order[direction]",
+							"value": "desc",
+							"disabled": true
+						},
+						{
+							"key": "filter[location_id]",
+							"value": "5",
+							"disabled": true
+						},
+						{
+							"key": "filter[storage_from]",
+							"value": "150",
+							"description": "Value is in MB",
+							"disabled": true
+						},
+						{
+							"key": "filter[storage_to]",
+							"value": "500",
+							"description": "Value is in MB",
+							"disabled": true
+						},
+						{
+							"key": "filter[hdd_type]",
+							"value": "SSD",
+							"disabled": true
+						},
+						{
+							"key": "filter[ram][]",
+							"value": "8",
+							"disabled": true
+						},
+						{
+							"key": "filter[ram][]",
+							"value": "16",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Start Structure",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost/api/structure",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"api",
+						"structure"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
