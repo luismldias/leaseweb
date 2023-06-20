@@ -72,7 +72,7 @@
                 </table>
             
         </div>
-        <pagination v-model="currentPage" :records="totalItems" :per-page="10" @paginate="onPaginate"/>
+        <pagination v-model="currentPage" :records="totalItems" :per-page="20" @paginate="onPaginate"/>
     </div>
     
    

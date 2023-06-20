@@ -23,4 +23,9 @@ php artisan db:seed
 Http://localhost
 
 
+### Tests Execution
+
+php artisan test
+
+
 
