@@ -9,6 +9,7 @@ docker compose up
 
 ### Save the file .env.example in the leaseweb folder as .env
 
+cp .env.example .env
 
 ### Install dependencies from inside the app container:
 composer install
