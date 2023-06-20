@@ -1,12 +1,18 @@
 
-## Start up
+## **Start up**
 
 ### Run the containers from the repo directory
 
 docker compose up
 
-## To be executed from inside (ssh) the app container in the leaseweb folder
+*Both methods described below must be executed inside the container in the app folder*
 
+
+## **Method 1 - Makefile**
+
+make build
+
+## **Method 2 - Manual steps**
 ### Save the file .env.example in the leaseweb folder as .env
 
 cp .env.example .env
