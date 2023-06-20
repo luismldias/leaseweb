@@ -3,36 +3,38 @@
 
 ### Run the containers from the repo directory
 
-docker compose up
+*docker compose up*
 
-*Both methods described below must be executed inside the container in the app folder*
+Both methods described below must be executed inside the container in the app folder
 
 
 ## **Method 1 - Makefile**
 
-make build
+*make build*
 
 ## **Method 2 - Manual steps**
 ### Save the file .env.example in the leaseweb folder as .env
 
-cp .env.example .env
+*cp .env.example .env*
 
 ### Install dependencies from inside the app container:
-composer install
+*composer install*
 
 ### Create the database structure from inside the app container:
-php artisan migrate
+*php artisan migrate*
 
 ### Populate the database from the file from inside the app container:
-php artisan db:seed
+*php artisan db:seed*
 
-### App Access
-Http://localhost
+### **App Access**
+*http://localhost*
 
 
-### Tests Execution
+## **Tests Execution**
 
-php artisan test
+There are a few basic tests in the app that can be executed by the following command:
+
+*php artisan test*
 
 
 
