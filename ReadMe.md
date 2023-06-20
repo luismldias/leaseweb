@@ -1,10 +1,6 @@
 
 ## Start up
 
-### Clone the repository
-
-git clone https://github.com/luismldias/leaseweb.git
-
 ### Run the containers from the repo directory
 
 docker compose up
